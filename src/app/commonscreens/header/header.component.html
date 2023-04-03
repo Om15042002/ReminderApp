@@ -1,0 +1,26 @@
+<div class="flexrow container">
+  <div class="flexrow" [ngClass]="{'leftsection': isloggedin === false, 'loginleftsection' : isloggedin===true }">
+    <div><h2>Reminder App</h2></div>
+    <div><a acti routerLink="home" routerLinkActive="active">Home</a></div>
+    <div  *ngIf="!isloggedin">
+      <a routerLink="medicineschedule" routerLinkActive="active">Medicine Schedule</a>
+    </div>
+    <div><a routerLink="aboutus" routerLinkActive="active">About Us</a></div>
+    <div>
+      <a routerLink="contactus" routerLinkActive="active">Contact Us</a>
+    </div>
+  </div>
+  <div class="flexrow" [ngClass]="{'rightsection': isloggedin === false, 'loginrightsection' : isloggedin===true }">
+    <div *ngIf="!isloggedin"><a routerLink="login">Login/Register</a></div>
+    <div
+      *ngIf="isloggedin"
+      class="flexrow userloginsection"
+      style="justify-content: space-between"
+    >
+      <div class="profile">
+        <i class="fas fa-user-circle"></i>
+      </div>
+      <div><p class="greetuser">Welcome , Om</p></div>
+    </div>
+  </div>
+</div>

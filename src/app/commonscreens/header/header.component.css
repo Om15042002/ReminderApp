@@ -1,0 +1,47 @@
+.container{
+    background-color: white;
+    height: 50px;
+    border-bottom: 1px solid rgb(209, 205, 205);
+}
+.leftsection > div,.loginleftsection > div{
+    margin: 0px 20px;
+}
+.leftsection a{
+    color:rgb(88, 160, 165) ;
+}
+.active{
+    font-size: x-large;
+    color: rgb(255, 0, 191) !important;
+}
+.leftsection , .rightsection ,.loginleftsection ,.loginrightsection{
+    align-items: center;
+}
+.leftsection{
+    flex: 90%;
+}
+.rightsection{
+    flex: 10%;
+}
+.loginleftsection{
+    flex: 85%;
+}
+.loginrightsection{
+    flex: 15%;
+}
+.rightsection a{
+    font-size: large;
+    font-weight: 600;
+    color: brown;
+}
+.userloginsection p{
+    color: brown;
+    font-size: larger;
+}
+.userloginsection i{
+    font-size: 30px;
+}
+.userloginsection > div{
+    margin-left: 20px;
+}
+
+
