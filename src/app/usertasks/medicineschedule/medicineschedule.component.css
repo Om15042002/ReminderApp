@@ -6,6 +6,9 @@
   /* width: -webkit-calc(100%-40px); */
   margin: 10px 40px;
 }
+.itemcontent{
+  margin-bottom: 15px;
+}
 #addschedule{
   border: 1px solid rgb(129, 123, 123);
   border-radius: 10px;
@@ -19,7 +22,7 @@
 }
 .medicineschedules{
   overflow-y: scroll;
-  height: 90%;
+  height: 600px;
 }
 .filtericon{
   font-size: 30px;
@@ -28,4 +31,74 @@
   border: 1px solid black;
   border-radius: 4px;
   margin-top: 10px;
+  box-shadow: 2px 2px 2px 2px #b8b3b3;
+}
+.actions {
+  justify-content: flex-end;
+}
+#edit, #delete{
+  margin: 0px 5px;
+}
+.itemcontent > div > div > div, .itemcontent > div > div  {
+  justify-content: space-around;
+  flex: 40%;
+}
+.labels{
+  align-items:end ;
+}
+.timedata p{
+  margin: 0px 5px;
+}
+.labels p{
+  font-weight: 700;
+}
+.weekdays button{
+  border-radius: 70%;
+  padding: 5px;
+  background-color: rgb(76, 76, 250);
+  color: white;
+  width: 40px;
+  
+}
+.weekdays >div{
+  margin: 0px 5px;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px; 
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100vh; /* Full height */
+  /* overflow: auto; Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 30px;
+  border: 1px solid #888;
+  width: 80%;
+
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }

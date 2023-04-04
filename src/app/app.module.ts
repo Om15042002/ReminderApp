@@ -14,9 +14,9 @@ import { UsertasksModule } from './usertasks/usertasks.module';
   imports: [
     BrowserModule,
     UsertasksModule,
-    AppRoutingModule,
+    AuthenticationModule,
     CommonscreensModule,
-    AuthenticationModule
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

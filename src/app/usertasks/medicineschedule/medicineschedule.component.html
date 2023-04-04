@@ -1,23 +1,67 @@
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="closefiltermodal()">&times;</span>
+    <p>Some text in the Modal..</p>
+  </div>
+</div>
 <div class="flexcolumn container">
-    <div class="addmedicineschedle flexrow" >
-        <div style="flex: 90%;">
-            <button id="addschedule">Add Schedule</button>
-        </div>
-        <div  style="flex: 10%;">
-            <i class="fa fa-filter filtericon"></i>
-        </div>
+  <div class="addmedicineschedle flexrow">
+    <div style="flex: 90%">
+      <button id="addschedule">Add Schedule</button>
     </div>
-    <p>
-        {{students[0].name}}
-    </p>
-    <!-- <div class="medicineschedules"> -->
-        <!-- <ng-container  > -->
-            <div *ngFor="let item of students">
-                <p>
-                    v
-                 </p>
+    <div style="flex: 10%">
+      <i class="fa fa-filter filtericon" (click)="openfiltermodal()"></i>
+    </div>
+  </div>
+
+  <div class="medicineschedules">
+    <div *ngFor="let item of students" class="scheduleitem flexcolumn">
+      <div class="flexrow actions">
+        <div><i class="far fa-edit" id="edit"></i></div>
+        <div><i class="fas fa-trash-alt" id="delete"></i></div>
+      </div>
+      <div class="itemcontent">
+        <div class="flexrow">
+          <div class="flexrow">
+            <div class="flexcolumn labels">
+              <div><p>Medicine Name:</p></div>
+              <div><p>Scheduled On:</p></div>
             </div>
-        <!-- </ng-container> -->
-        
-    <!-- </div> -->
+            <div class="flexcolumn value">
+              <div><p>abc</p></div>
+              <div class="flexrow weekdays">
+                <div><button>Mon</button></div>
+                <div><button>Wed</button></div>
+                <div><button>Tue</button></div>
+              </div>
+            </div>
+          </div>
+          <div class="flexrow">
+            <div class="flexcolumn labels">
+              <div><p>Time Phase:</p></div>
+              <div><p>Quantity:</p></div>
+              <div><p>Reminder Time:</p></div>
+            </div>
+            <div class="flexcolumn value timedata">
+              <div class="flexrow">
+                <div><p>abc</p></div>
+                <div><p>abc</p></div>
+                <div><p>abc</p></div>
+              </div>
+              <div class="flexrow">
+                <div><p>abc</p></div>
+                <div><p>abc</p></div>
+                <div><p>abc</p></div>
+              </div>
+              <div class="flexrow">
+                <div><p>abc</p></div>
+                <div><p>abc</p></div>
+                <div><p>abc</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

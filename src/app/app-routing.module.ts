@@ -17,7 +17,6 @@ const routes: Routes = [
   { path: 'medicineschedule', component: MedicinescheduleComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PagenotfoundComponent }
-
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
