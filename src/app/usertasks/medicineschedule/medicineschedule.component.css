@@ -84,8 +84,8 @@
   margin: auto;
   padding: 30px;
   border: 1px solid #888;
-  width: 80%;
-
+  width: 50%;
+  border-radius: 5px;
 }
 
 /* The Close Button */

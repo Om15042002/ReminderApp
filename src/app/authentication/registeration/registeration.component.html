@@ -29,7 +29,7 @@
     background-attachment: fixed;
     background-size: cover;
   ">
-      <div class="container" style="">
+      <div class="maincontainer" >
         <div class=" justify-content-center">
           <div class >
             <div class="wrap d-md-flex" style="width: 100%;">
@@ -39,7 +39,7 @@
                     <h3 class="mb-4">Register</h3>
                   </div>
                 </div>
-                <form action="#" class="signin-form" >
+                <form action="#" class="signin-form" [formGroup]="registrationform"  (ngSubmit)="registeruser()">
                   <div class="form-group mb-3">
                     <label class="label" for="name">Name</label>
                     <input

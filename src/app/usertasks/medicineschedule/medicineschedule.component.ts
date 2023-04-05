@@ -15,17 +15,34 @@ import { Router } from '@angular/router';
 export class MedicinescheduleComponent {
 
   openfiltermodal() {
-    const modal=document.getElementById("myModal")
+    const modal=document.getElementById("filterModal")
     if(modal!=null)
         modal.style.display='block'
   }
   closefiltermodal(){
-    const modal=document.getElementById("myModal")
+    const modal=document.getElementById("filterModal")
     if(modal!=null)
         modal.style.display='none'
   }
-  openaddschedulemodal(filtercontent: any) {
-
+  openeditmodal() {
+    const modal=document.getElementById("editModal")
+    if(modal!=null)
+        modal.style.display='block'
+  }
+  closeeditmodal(){
+    const modal=document.getElementById("editModal")
+    if(modal!=null)
+        modal.style.display='none'
+  }
+  openaddschedulemodal() {
+    const modal=document.getElementById("addscheduleModal")
+    if(modal!=null)
+        modal.style.display='block'
+  }
+  closeaddschedulemodal(){
+    const modal=document.getElementById("addscheduleModal")
+    if(modal!=null)
+        modal.style.display='none'
   }
   constructor( private builder: FormBuilder) {
 

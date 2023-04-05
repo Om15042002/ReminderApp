@@ -6,17 +6,23 @@ import { AppComponent } from './app.component';
 import { CommonscreensModule } from './commonscreens/commonscreens.module';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { UsertasksModule } from './usertasks/usertasks.module';
-
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     UsertasksModule,
     AuthenticationModule,
     CommonscreensModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

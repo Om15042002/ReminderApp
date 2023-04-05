@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, Event, NavigationStart, NavigationEnd, NavigationError } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 interface task {
   taskid: number;
   title: string;
@@ -17,25 +19,19 @@ interface task {
 })
 
 export class HeaderComponent {
-  constructor(private router: Router
+  isloggedin: Boolean =false
+  constructor(private router: Router,private service:AuthenticationService, private toastr: ToastrService
   ) {
-
-    this.router.events.subscribe((event: Event) => {
-
-      if (event instanceof NavigationEnd) {
-        this.aboutus = this.contactus = this.home = false;
-        if (this.router.url === '/aboutus')
-          this.aboutus = true;
-        if (this.router.url === '/contactus')
-          this.contactus = true;
-        if (this.router.url === '/')
-          this.home = true;
-      }
-    });
-
+    // this.isloggedin= AuthenticationService.isloggedin;
   }
-  aboutus: Boolean = false;
-    contactus: Boolean = false;
-    home: Boolean = false;
-    isloggedin: Boolean = false;
-}
+  ngOnInit():void{
+    this.service.loginEmitter.subscribe((value)=>{
+      this.isloggedin=value;
+    })
+  }
+  logout(){
+    localStorage.clear()
+    this.service.raiseDataEmitterEvent(false);
+    this.toastr.success('Success', 'logged out successfully');
+  }
+};

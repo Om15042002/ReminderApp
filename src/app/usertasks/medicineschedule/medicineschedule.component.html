@@ -1,13 +1,353 @@
-<div id="myModal" class="modal">
-  <div class="modal-content">
-    <span class="close" (click)="closefiltermodal()">&times;</span>
-    <p>Some text in the Modal..</p>
+<div id="addscheduleModal" class="modal">
+  <div class="modal-content flexcolumn">
+    <div>
+      <span class="close" (click)="closeaddschedulemodal()">&times;</span>
+    </div>
+    <form action="">
+      <div class="flexrow">
+        <div class="labels flexcolumn">
+          <label for="">Medicine Name:</label>
+          <label for="">Schedule Time: </label>
+          <label for="">Time Phase: </label>
+          <label for="">Quantity: </label>
+          <label for="">Reminder At: </label>
+        </div>
+        <div class="inputfields flexcolumn">
+          <div><input type="text" /></div>
+          <div class="flexrow">
+            <div>
+              <input
+                class="styled-checkbox"
+                id="styled-checkbox-2"
+                type="checkbox"
+                value="value2"
+                checked
+              />
+              <label for="Mon">Mon</label>
+            </div>
+            <div>
+              <input
+                class="styled-checkbox"
+                id="styled-checkbox-2"
+                type="checkbox"
+                value="value2"
+                checked
+              />
+              <label for="Tue">Tue</label>
+            </div>
+            <div>
+              <input
+                class="styled-checkbox"
+                id="styled-checkbox-2"
+                type="checkbox"
+                value="value2"
+                checked
+              />
+              <label for="Wed">Wed</label>
+            </div>
+            <div>
+              <input
+                class="styled-checkbox"
+                id="styled-checkbox-2"
+                type="checkbox"
+                value="value2"
+                checked
+              />
+              <label for="Thus">Thus</label>
+            </div>
+            <div>
+              <input
+                class="styled-checkbox"
+                id="styled-checkbox-2"
+                type="checkbox"
+                value="value2"
+                checked
+              />
+              <label for="Fri">Fri</label>
+            </div>
+            <div>
+              <input
+                class="styled-checkbox"
+                id="styled-checkbox-2"
+                type="checkbox"
+                value="value2"
+                checked
+              />
+              <label for="Sat">Sat</label>
+            </div>
+            <div>
+              <input
+                class="styled-checkbox"
+                id="styled-checkbox-2"
+                type="checkbox"
+                value="value2"
+                checked
+              />
+              <label for="Sun">Sun</label>
+            </div>
+          </div>
+          <div class="flexrow">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="mySwitch" name="darkmode" value="yes" checked>
+              <label class="form-check-label" for="mySwitch">Morning</label>
+            </div>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="mySwitch" name="darkmode" value="yes" checked>
+              <label class="form-check-label" for="mySwitch">Afternoon</label>
+            </div>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="mySwitch" name="darkmode" value="yes" checked>
+              <label class="form-check-label" for="mySwitch">Night</label>
+            </div>
+          </div>
+          <div class="flexrow">
+            <div><input type="number"></div>
+            <div><input type="number"></div>
+            <div><input type="number"></div>
+          </div>
+          <div class="flexrow">
+            <div><input type="number"></div>
+            <div><input type="number"></div>
+            <div><input type="number"></div>
+          </div>
+          <div>
+            <button type="submit" class="btn btn-primary mt-3">Submit</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div id="editModal" class="modal">
+  <div class="modal-content flexcolumn">
+    <div>
+      <span class="close" (click)="closeaddschedulemodal()">&times;</span>
+    </div>
+    <form action="">
+      <div class="flexrow">
+        <div class="labels flexcolumn">
+          <label for="">Medicine Name:</label>
+          <label for="">Schedule Time: </label>
+          <label for="">Time Phase: </label>
+          <label for="">Quantity: </label>
+          <label for="">Reminder At: </label>
+        </div>
+        <div class="inputfields flexcolumn">
+          <div><input type="text" /></div>
+          <div class="flexrow">
+            <div>
+              <input
+                class="styled-checkbox"
+                id="styled-checkbox-2"
+                type="checkbox"
+                value="value2"
+                checked
+              />
+              <label for="Mon">Mon</label>
+            </div>
+            <div>
+              <input
+                class="styled-checkbox"
+                id="styled-checkbox-2"
+                type="checkbox"
+                value="value2"
+                checked
+              />
+              <label for="Tue">Tue</label>
+            </div>
+            <div>
+              <input
+                class="styled-checkbox"
+                id="styled-checkbox-2"
+                type="checkbox"
+                value="value2"
+                checked
+              />
+              <label for="Wed">Wed</label>
+            </div>
+            <div>
+              <input
+                class="styled-checkbox"
+                id="styled-checkbox-2"
+                type="checkbox"
+                value="value2"
+                checked
+              />
+              <label for="Thus">Thus</label>
+            </div>
+            <div>
+              <input
+                class="styled-checkbox"
+                id="styled-checkbox-2"
+                type="checkbox"
+                value="value2"
+                checked
+              />
+              <label for="Fri">Fri</label>
+            </div>
+            <div>
+              <input
+                class="styled-checkbox"
+                id="styled-checkbox-2"
+                type="checkbox"
+                value="value2"
+                checked
+              />
+              <label for="Sat">Sat</label>
+            </div>
+            <div>
+              <input
+                class="styled-checkbox"
+                id="styled-checkbox-2"
+                type="checkbox"
+                value="value2"
+                checked
+              />
+              <label for="Sun">Sun</label>
+            </div>
+          </div>
+          <div class="flexrow">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="mySwitch" name="darkmode" value="yes" checked>
+              <label class="form-check-label" for="mySwitch">Morning</label>
+            </div>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="mySwitch" name="darkmode" value="yes" checked>
+              <label class="form-check-label" for="mySwitch">Afternoon</label>
+            </div>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="mySwitch" name="darkmode" value="yes" checked>
+              <label class="form-check-label" for="mySwitch">Night</label>
+            </div>
+          </div>
+          <div class="flexrow">
+            <div><input type="number"></div>
+            <div><input type="number"></div>
+            <div><input type="number"></div>
+          </div>
+          <div class="flexrow">
+            <div><input type="number"></div>
+            <div><input type="number"></div>
+            <div><input type="number"></div>
+          </div>
+          <div>
+            <button type="submit" class="btn btn-primary mt-3">Submit</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div id="filterModal" class="modal">
+  <div class="modal-content flexcolumn">
+    <div>
+      <span class="close" (click)="closefiltermodal()">&times;</span>
+    </div>
+    <div class="flexrow">
+      <div class="labels flexcolumn">
+        <div><label for="">Medicine Name</label></div>
+        <div><label for="">Day</label></div>
+        <div><label for="">Time Phase</label></div>
+      </div>
+      <div class="inputfields flexcolumn">
+        <div><input type="text"></div>
+        <div class="flexrow">
+          <div>
+            <input
+              class="styled-checkbox"
+              id="styled-checkbox-2"
+              type="checkbox"
+              value="value2"
+              checked
+            />
+            <label for="Mon">Mon</label>
+          </div>
+          <div class="flexrow">
+            <input
+              class="styled-checkbox"
+              id="styled-checkbox-2"
+              type="checkbox"
+              value="value2"
+              checked
+            />
+            <label for="Tue">Tue</label>
+          </div>
+          <div>
+            <input
+              class="styled-checkbox"
+              id="styled-checkbox-2"
+              type="checkbox"
+              value="value2"
+              checked
+            />
+            <label for="Wed">Wed</label>
+          </div>
+          <div>
+            <input
+              class="styled-checkbox"
+              id="styled-checkbox-2"
+              type="checkbox"
+              value="value2"
+              checked
+            />
+            <label for="Thus">Thus</label>
+          </div>
+          <div>
+            <input
+              class="styled-checkbox"
+              id="styled-checkbox-2"
+              type="checkbox"
+              value="value2"
+              checked
+            />
+            <label for="Fri">Fri</label>
+          </div>
+          <div>
+            <input
+              class="styled-checkbox"
+              id="styled-checkbox-2"
+              type="checkbox"
+              value="value2"
+              checked
+            />
+            <label for="Sat">Sat</label>
+          </div>
+          <div>
+            <input
+              class="styled-checkbox"
+              id="styled-checkbox-2"
+              type="checkbox"
+              value="value2"
+              checked
+            />
+            <label for="Sun">Sun</label>
+          </div>
+        </div>
+        <div class="flexrow">
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="mySwitch" name="darkmode" value="yes" checked>
+            <label class="form-check-label" for="mySwitch">Morning</label>
+          </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="mySwitch" name="darkmode" value="yes" checked>
+            <label class="form-check-label" for="mySwitch">Afternoon</label>
+          </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="mySwitch" name="darkmode" value="yes" checked>
+            <label class="form-check-label" for="mySwitch">Night</label>
+          </div>
+        </div>
+        <div>
+          <button type="submit" class="btn btn-primary mt-3">Apply</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <div class="flexcolumn container">
   <div class="addmedicineschedle flexrow">
     <div style="flex: 90%">
-      <button id="addschedule">Add Schedule</button>
+      <button id="addschedule" (click)="openaddschedulemodal()">Add Schedule</button>
     </div>
     <div style="flex: 10%">
       <i class="fa fa-filter filtericon" (click)="openfiltermodal()"></i>
@@ -30,9 +370,9 @@
             <div class="flexcolumn value">
               <div><p>abc</p></div>
               <div class="flexrow weekdays">
-                <div><button>Mon</button></div>
-                <div><button>Wed</button></div>
-                <div><button>Tue</button></div>
+                <div><button disabled>Mon</button></div>
+                <div><button disabled>Wed</button></div>
+                <div><button disabled>Tue</button></div>
               </div>
             </div>
           </div>

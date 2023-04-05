@@ -1,7 +1,7 @@
 .labels{
     align-items: end;
 }
-.container{
+.maincontainer{
     height:30%;
     width: 100vw;
     background-color: #061621;
@@ -9,11 +9,11 @@
     justify-content: space-around;
     padding: 20px;
 }
-.container > div{
+.maincontainer > div{
     flex: 50%;
     margin-left: 50px;
 }
-.container input, .container textarea{ 
+.maincontainer input, .maincontainer textarea{ 
     border: 1px soild black;
     border-radius: 5px;
     width: 100%;

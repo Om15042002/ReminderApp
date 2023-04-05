@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { RegisterationComponent } from './registeration/registeration.component';
 import { AppRoutingModule } from '../app-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule ,ToastrService } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,14 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     // FormsModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    ToastrModule.forRoot({
+      timeOut: 1000,
+      positionClass: 'toast-bottom-right',
+      // toastClass: 'toast toast-bootstrap-compatibility-fix'
+
+    }),
   ],
   exports:[
     LoginComponent,

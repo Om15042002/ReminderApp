@@ -579,7 +579,7 @@
     overflow-y: scroll;
   }
   
-  .container {
+  .maincontainer {
     width: 100%;
     padding-right: 15px;
     padding-left: 15px;
@@ -587,27 +587,27 @@
     margin-left: auto;
   }
   @media (min-width: 576px) {
-    .container {
+    .maincontainer {
       max-width: 540px;
     }
   }
   @media (min-width: 768px) {
-    .container {
+    .maincontainer {
       max-width: 720px;
     }
   }
   @media (min-width: 992px) {
-    .container {
+    .maincontainer {
       max-width: 960px;
     }
   }
   @media (min-width: 1200px) {
-    .container {
+    .maincontainer {
       max-width: 1140px;
     }
   }
   
-  .container-fluid {
+  .maincontainer-fluid {
     width: 100%;
     padding-right: 15px;
     padding-left: 15px;
@@ -4514,8 +4514,8 @@
     justify-content: space-between;
     padding: 0.5rem 1rem;
   }
-  .navbar > .container,
-  .navbar > .container-fluid {
+  .navbar > .maincontainer,
+  .navbar > .maincontainer-fluid {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -4605,8 +4605,8 @@
   }
   
   @media (max-width: 575.98px) {
-    .navbar-expand-sm > .container,
-    .navbar-expand-sm > .container-fluid {
+    .navbar-expand-sm > .maincontainer,
+    .navbar-expand-sm > .maincontainer-fluid {
       padding-right: 0;
       padding-left: 0;
     }
@@ -4635,8 +4635,8 @@
       padding-right: 0.5rem;
       padding-left: 0.5rem;
     }
-    .navbar-expand-sm > .container,
-    .navbar-expand-sm > .container-fluid {
+    .navbar-expand-sm > .maincontainer,
+    .navbar-expand-sm > .maincontainer-fluid {
       -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
     }
@@ -4653,8 +4653,8 @@
   }
   
   @media (max-width: 767.98px) {
-    .navbar-expand-md > .container,
-    .navbar-expand-md > .container-fluid {
+    .navbar-expand-md > .maincontainer,
+    .navbar-expand-md > .maincontainer-fluid {
       padding-right: 0;
       padding-left: 0;
     }
@@ -4683,8 +4683,8 @@
       padding-right: 0.5rem;
       padding-left: 0.5rem;
     }
-    .navbar-expand-md > .container,
-    .navbar-expand-md > .container-fluid {
+    .navbar-expand-md > .maincontainer,
+    .navbar-expand-md > .maincontainer-fluid {
       -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
     }
@@ -4701,8 +4701,8 @@
   }
   
   @media (max-width: 991.98px) {
-    .navbar-expand-lg > .container,
-    .navbar-expand-lg > .container-fluid {
+    .navbar-expand-lg > .maincontainer,
+    .navbar-expand-lg > .maincontainer-fluid {
       padding-right: 0;
       padding-left: 0;
     }
@@ -4731,8 +4731,8 @@
       padding-right: 0.5rem;
       padding-left: 0.5rem;
     }
-    .navbar-expand-lg > .container,
-    .navbar-expand-lg > .container-fluid {
+    .navbar-expand-lg > .maincontainer,
+    .navbar-expand-lg > .maincontainer-fluid {
       -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
     }
@@ -4749,8 +4749,8 @@
   }
   
   @media (max-width: 1199.98px) {
-    .navbar-expand-xl > .container,
-    .navbar-expand-xl > .container-fluid {
+    .navbar-expand-xl > .maincontainer,
+    .navbar-expand-xl > .maincontainer-fluid {
       padding-right: 0;
       padding-left: 0;
     }
@@ -4779,8 +4779,8 @@
       padding-right: 0.5rem;
       padding-left: 0.5rem;
     }
-    .navbar-expand-xl > .container,
-    .navbar-expand-xl > .container-fluid {
+    .navbar-expand-xl > .maincontainer,
+    .navbar-expand-xl > .maincontainer-fluid {
       -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
     }
@@ -4805,8 +4805,8 @@
     -ms-flex-pack: start;
     justify-content: flex-start;
   }
-  .navbar-expand > .container,
-  .navbar-expand > .container-fluid {
+  .navbar-expand > .maincontainer,
+  .navbar-expand > .maincontainer-fluid {
     padding-right: 0;
     padding-left: 0;
   }
@@ -4823,8 +4823,8 @@
     padding-right: 0.5rem;
     padding-left: 0.5rem;
   }
-  .navbar-expand > .container,
-  .navbar-expand > .container-fluid {
+  .navbar-expand > .maincontainer,
+  .navbar-expand > .maincontainer-fluid {
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
   }
@@ -10603,7 +10603,7 @@
     body {
       min-width: 992px !important;
     }
-    .container {
+    .maincontainer {
       min-width: 992px !important;
     }
     .navbar {

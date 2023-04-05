@@ -1,4 +1,4 @@
-.container{
+.maincontainer{
     background-color: white;
     height: 50px;
     border-bottom: 1px solid rgb(209, 205, 205);
@@ -32,6 +32,10 @@
     font-size: large;
     font-weight: 600;
     color: brown;
+    
+}
+a{
+    text-decoration: none;
 }
 .userloginsection p{
     color: brown;

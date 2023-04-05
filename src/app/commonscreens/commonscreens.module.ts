@@ -10,6 +10,7 @@ import { RegisterationComponent } from '../authentication/registeration/register
 import { AuthenticationModule } from '../authentication/authentication.module';
 import { AppRoutingModule } from '../app-routing.module';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -25,7 +26,13 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
   imports: [
     CommonModule,
     AuthenticationModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ToastrModule.forRoot({
+      timeOut: 1000,
+      positionClass: 'toast-bottom-right',
+      // toastClass: 'toast toast-bootstrap-compatibility-fix'
+
+    }),
   ],
   exports:[
     HeaderComponent,
