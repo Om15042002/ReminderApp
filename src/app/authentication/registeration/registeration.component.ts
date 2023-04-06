@@ -33,5 +33,4 @@ export class RegisterationComponent {
       this.toastr.warning("Please enter valid data!!")
     }
   }
-
 }
