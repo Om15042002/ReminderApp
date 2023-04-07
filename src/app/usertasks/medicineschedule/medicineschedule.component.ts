@@ -14,15 +14,29 @@ import { UsertasksService } from 'src/app/services/usertasks.service';
   templateUrl: './medicineschedule.component.html',
   styleUrls: ['./medicineschedule.component.css']
 })
-export class MedicinescheduleComponent {
-  medicinescheduledata: any={
-    medicinename:"",
-    remindertime:[],
-    timephase:[],
-    quantity:[],
-    days:[]
 
+export class MedicinescheduleComponent {
+  editedmedicinescheduledata: any = {
+    medicinename: "",
+    remindertime: [],
+    timephase: [],
+    quantity: [],
+    days: []
   };
+  medicinescheduledata: any;
+  ngOnInit() {
+    console.log("hello");
+    
+    this.service.getmedicineschedules().subscribe((res: any) => {
+      if (res.success) {
+        this.toastr.success(res.message);
+        this.medicinescheduledata=res.data;
+        console.log(this.medicinescheduledata);
+      }
+      else
+        this.toastr.warning(res.message);
+    });
+  }
   openfiltermodal() {
     const modal = document.getElementById("filterModal")
     if (modal != null)
@@ -103,13 +117,13 @@ export class MedicinescheduleComponent {
 
   }
   validatemedicinedata() {
-    this.medicinescheduledata={
-      medicinename:"",
-      remindertime:[],
-      timephase:[],
-      quantity:[],
-      days:[]
-  
+    this.editedmedicinescheduledata = {
+      medicinename: "",
+      remindertime: [],
+      timephase: [],
+      quantity: [],
+      days: []
+
     };
     const medicinename: any = document.getElementById("medicinename");
 
@@ -152,9 +166,9 @@ export class MedicinescheduleComponent {
           this.toastr.warning("Please enter proper value of quantity and remindertime for morning!!")
         }
         else {
-          this.medicinescheduledata["timephase"].push("morning");
-          this.medicinescheduledata["remindertime"].push(remindertime_morning.value);
-          this.medicinescheduledata["quantity"].push(quantity_morning.value);
+          this.editedmedicinescheduledata["timephase"].push("morning");
+          this.editedmedicinescheduledata["remindertime"].push(remindertime_morning.value);
+          this.editedmedicinescheduledata["quantity"].push(quantity_morning.value);
         }
       }
       if (timephase_afternoon.checked) {
@@ -163,46 +177,49 @@ export class MedicinescheduleComponent {
           this.toastr.warning("Please enter proper value of quantity and remindertime for afternoon!!")
         }
         else {
-          this.medicinescheduledata["timephase"].push("afternoon");
-          this.medicinescheduledata["remindertime"].push(remindertime_afternoon.value);
-          this.medicinescheduledata["quantity"].push(quantity_afternoon.value);
+          this.editedmedicinescheduledata["timephase"].push("afternoon");
+          this.editedmedicinescheduledata["remindertime"].push(remindertime_afternoon.value);
+          this.editedmedicinescheduledata["quantity"].push(quantity_afternoon.value);
         }
       }
       if (timephase_night.checked) {
-        if (quantity_morning.value =="" ||
-          remindertime_morning.value =="") {
+        if (quantity_morning.value == "" ||
+          remindertime_morning.value == "") {
           this.toastr.warning("Please enter proper value of quantity and remindertime for night!!")
         }
         else {
-          this.medicinescheduledata["timephase"].push("night");
-          this.medicinescheduledata["remindertime"].push(remindertime_night.value);
-          this.medicinescheduledata["quantity"].push(quantity_night.value);
+          this.editedmedicinescheduledata["timephase"].push("night");
+          this.editedmedicinescheduledata["remindertime"].push(remindertime_night.value);
+          this.editedmedicinescheduledata["quantity"].push(quantity_night.value);
         }
       }
-        this.medicinescheduledata["medicinename"] = medicinename.value;
-        if(day_mon.checked)
-        this.medicinescheduledata["days"].push("Mon");
-        if(day_tue.checked)
-        this.medicinescheduledata["days"].push("Tue");
-        if(day_wed.checked)
-        this.medicinescheduledata["days"].push("Wed");
-        if(day_thus.checked)
-        this.medicinescheduledata["days"].push("Thus");
-        if(day_fri.checked)
-        this.medicinescheduledata["days"].push("Fri");
-        if(day_sat.checked)
-        this.medicinescheduledata["days"].push("Sun");
-        if(day_sun.checked)
-        this.medicinescheduledata["days"].push("Sat");
-        console.log(this.medicinescheduledata);
-        this.addmedicineschedule();
+      this.editedmedicinescheduledata["medicinename"] = medicinename.value;
+      if (day_mon.checked)
+        this.editedmedicinescheduledata["days"].push("Mon");
+      if (day_tue.checked)
+        this.editedmedicinescheduledata["days"].push("Tue");
+      if (day_wed.checked)
+        this.editedmedicinescheduledata["days"].push("Wed");
+      if (day_thus.checked)
+        this.editedmedicinescheduledata["days"].push("Thus");
+      if (day_fri.checked)
+        this.editedmedicinescheduledata["days"].push("Fri");
+      if (day_sat.checked)
+        this.editedmedicinescheduledata["days"].push("Sun");
+      if (day_sun.checked)
+        this.editedmedicinescheduledata["days"].push("Sat");
+      console.log(this.editedmedicinescheduledata);
+      this.addmedicineschedule();
     }
   }
   addmedicineschedule() {
-    
-    this.service.addmedicineschedule(this.medicinescheduledata).subscribe(res=>{
-      this.toastr.success('Success','Data added');
-      this.router.navigate(['login']);
+
+    this.service.addmedicineschedule(this.editedmedicinescheduledata).subscribe((res: any) => {
+      if (res.success)
+        this.toastr.success(res.message);
+      else
+        this.toastr.warning(res.message);
+      // this.router.navigate(['login']);
     })
   }
   students: any[] = [

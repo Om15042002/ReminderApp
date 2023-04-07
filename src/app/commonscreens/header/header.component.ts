@@ -33,5 +33,6 @@ export class HeaderComponent {
     localStorage.clear()
     this.service.raiseDataEmitterEvent(false);
     this.toastr.success('Success', 'logged out successfully');
+    this.router.navigate(['']);
   }
 };
