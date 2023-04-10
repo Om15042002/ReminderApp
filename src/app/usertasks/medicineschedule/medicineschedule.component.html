@@ -13,7 +13,7 @@
           <label for="">Reminder At: </label>
         </div>
         <div class="inputfields flexcolumn">
-          <div><input type="text" id="medicinename"/></div>
+          <div><input type="text" id="medicinename" /></div>
           <div class="flexrow">
             <div>
               <input
@@ -81,27 +81,50 @@
           </div>
           <div class="flexrow">
             <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" id="morning" name="darkmode" value="Morning" (change)="enablecontrols()">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="morning"
+                name="darkmode"
+                value="Morning"
+                (change)="enablecontrols()"
+              />
               <label class="form-check-label" for="mySwitch">Morning</label>
             </div>
             <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" id="afternoon" name="darkmode" value="Afternoon" (change)="enablecontrols()">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="afternoon"
+                name="darkmode"
+                value="Afternoon"
+                (change)="enablecontrols()"
+              />
               <label class="form-check-label" for="mySwitch">Afternoon</label>
             </div>
             <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" id="night" name="darkmode" value="Night" (change)="enablecontrols()">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="night"
+                name="darkmode"
+                value="Night"
+                (change)="enablecontrols()"
+              />
               <label class="form-check-label" for="mySwitch">Night</label>
             </div>
           </div>
           <div class="flexrow">
-            <div><input id="MorningQuantity" type="number" disabled></div>
-            <div><input id="AfternoonQuantity" type="number" disabled></div>
-            <div><input id="NightQuantity" type="number" disabled></div>
+            <div><input id="MorningQuantity" type="number" disabled /></div>
+            <div><input id="AfternoonQuantity" type="number" disabled /></div>
+            <div><input id="NightQuantity" type="number" disabled /></div>
           </div>
           <div class="flexrow">
-            <div><input id="MorningReminderTime" type="number" disabled></div>
-            <div><input id="AfternoonReminderTime" type="number" disabled></div>
-            <div><input id="NightReminderTime" type="number" disabled></div>
+            <div><input id="MorningReminderTime" type="number" disabled /></div>
+            <div>
+              <input id="AfternoonReminderTime" type="number" disabled />
+            </div>
+            <div><input id="NightReminderTime" type="number" disabled /></div>
           </div>
           <div>
             <button type="submit" class="btn btn-primary mt-3">Submit</button>
@@ -201,27 +224,48 @@
           </div>
           <div class="flexrow">
             <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" id="mySwitch" name="darkmode" value="yes" checked>
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="mySwitch"
+                name="darkmode"
+                value="yes"
+                checked
+              />
               <label class="form-check-label" for="mySwitch">Morning</label>
             </div>
             <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" id="mySwitch" name="darkmode" value="yes" checked>
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="mySwitch"
+                name="darkmode"
+                value="yes"
+                checked
+              />
               <label class="form-check-label" for="mySwitch">Afternoon</label>
             </div>
             <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" id="mySwitch" name="darkmode" value="yes" checked>
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="mySwitch"
+                name="darkmode"
+                value="yes"
+                checked
+              />
               <label class="form-check-label" for="mySwitch">Night</label>
             </div>
           </div>
           <div class="flexrow">
-            <div><input type="number"></div>
-            <div><input type="number"></div>
-            <div><input type="number"></div>
+            <div><input type="number" /></div>
+            <div><input type="number" /></div>
+            <div><input type="number" /></div>
           </div>
           <div class="flexrow">
-            <div><input type="number"></div>
-            <div><input type="number"></div>
-            <div><input type="number"></div>
+            <div><input type="number" /></div>
+            <div><input type="number" /></div>
+            <div><input type="number" /></div>
           </div>
           <div>
             <button type="submit" class="btn btn-primary mt-3">Submit</button>
@@ -243,7 +287,7 @@
         <div><label for="">Time Phase</label></div>
       </div>
       <div class="inputfields flexcolumn">
-        <div><input type="text"></div>
+        <div><input type="text" id="search"/></div>
         <div class="flexrow">
           <div>
             <input
@@ -251,7 +295,7 @@
               id="styled-checkbox-2"
               type="checkbox"
               value="value2"
-              checked
+              id="filterMon"
             />
             <label for="Mon">Mon</label>
           </div>
@@ -261,7 +305,7 @@
               id="styled-checkbox-2"
               type="checkbox"
               value="value2"
-              checked
+              id="filterTue"
             />
             <label for="Tue">Tue</label>
           </div>
@@ -271,7 +315,7 @@
               id="styled-checkbox-2"
               type="checkbox"
               value="value2"
-              checked
+              id="filterWed"
             />
             <label for="Wed">Wed</label>
           </div>
@@ -281,7 +325,7 @@
               id="styled-checkbox-2"
               type="checkbox"
               value="value2"
-              checked
+              id="filterThus"
             />
             <label for="Thus">Thus</label>
           </div>
@@ -291,7 +335,7 @@
               id="styled-checkbox-2"
               type="checkbox"
               value="value2"
-              checked
+              id="filterFri"
             />
             <label for="Fri">Fri</label>
           </div>
@@ -301,7 +345,7 @@
               id="styled-checkbox-2"
               type="checkbox"
               value="value2"
-              checked
+              id="filterSat"
             />
             <label for="Sat">Sat</label>
           </div>
@@ -311,36 +355,59 @@
               id="styled-checkbox-2"
               type="checkbox"
               value="value2"
-              checked
+              id="filterSun"
             />
             <label for="Sun">Sun</label>
           </div>
         </div>
         <div class="flexrow">
           <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="mySwitch" name="darkmode" value="yes" checked>
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="mySwitch"
+              name="darkmode"
+              value="yes"
+              id="filterMorning"
+            />
             <label class="form-check-label" for="mySwitch">Morning</label>
           </div>
           <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="mySwitch" name="darkmode" value="yes" checked>
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="mySwitch"
+              name="darkmode"
+              value="yes"
+              id="filterAfternoon"
+            />
             <label class="form-check-label" for="mySwitch">Afternoon</label>
           </div>
           <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="mySwitch" name="darkmode" value="yes" checked>
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="mySwitch"
+              name="darkmode"
+              value="yes"
+              id="filterNight"
+            />
             <label class="form-check-label" for="mySwitch">Night</label>
           </div>
         </div>
         <div>
-          <button type="submit" class="btn btn-primary mt-3">Apply</button>
+          <button type="submit" class="btn btn-primary mt-3" (click)="filterschedules()">Apply</button>
         </div>
       </div>
     </div>
   </div>
 </div>
-<div class="flexcolumn container">
+<div class="flexcolumn container" >
   <div class="addmedicineschedle flexrow">
     <div style="flex: 90%">
-      <button id="addschedule" (click)="openaddschedulemodal()">Add Schedule</button>
+      <button id="addschedule" (click)="openaddschedulemodal()">
+        Add Schedule
+      </button>
     </div>
     <div style="flex: 10%">
       <i class="fa fa-filter filtericon" (click)="openfiltermodal()"></i>
@@ -348,10 +415,16 @@
   </div>
 
   <div class="medicineschedules">
-    <div *ngFor="let item of students" class="scheduleitem flexcolumn">
+    <div
+    *ngFor="
+    let itemname of medicinescheduledata['medicinenames'];
+    let i = index
+  "
+      class="scheduleitem flexcolumn"
+    >
       <div class="flexrow actions">
         <div><i class="far fa-edit" id="edit"></i></div>
-        <div><i class="fas fa-trash-alt" id="delete"></i></div>
+        <div (click)="deleteschedule(medicinescheduledata['medicine_id'][i],i)"><i class="fas fa-trash-alt" id="delete" ></i></div>
       </div>
       <div class="itemcontent">
         <div class="flexrow">
@@ -361,11 +434,17 @@
               <div><p>Scheduled On:</p></div>
             </div>
             <div class="flexcolumn value">
-              <div><p>abc</p></div>
+              <div>
+                <p>{{ itemname }}</p>
+              </div>
               <div class="flexrow weekdays">
-                <div><button disabled>Mon</button></div>
-                <div><button disabled>Wed</button></div>
-                <div><button disabled>Tue</button></div>
+                <div
+                  *ngFor="let day of medicinescheduledata['days'][i].day_name"
+                >
+                  <button disabled>{{ day }}</button>
+                </div>
+                <!-- <div><button disabled>Wed</button></div>
+                <div><button disabled>Tue</button></div> -->
               </div>
             </div>
           </div>
@@ -377,19 +456,34 @@
             </div>
             <div class="flexcolumn value timedata">
               <div class="flexrow">
-                <div><p>abc</p></div>
-                <div><p>abc</p></div>
-                <div><p>abc</p></div>
+                <div
+                  *ngFor="
+                    let timephase of medicinescheduledata['otherdetails'][i]
+                      .timephase
+                  "
+                >
+                  <p>{{ timephase }}</p>
+                </div>
               </div>
               <div class="flexrow">
-                <div><p>abc</p></div>
-                <div><p>abc</p></div>
-                <div><p>abc</p></div>
+                <div
+                *ngFor="
+                  let quantity of medicinescheduledata['otherdetails'][i]
+                    .quantity
+                "
+              >
+                <p>{{ quantity }}</p>
+              </div>
               </div>
               <div class="flexrow">
-                <div><p>abc</p></div>
-                <div><p>abc</p></div>
-                <div><p>abc</p></div>
+                <div
+                *ngFor="
+                  let remindertime of medicinescheduledata['otherdetails'][i]
+                    .remindertime
+                "
+              >
+                <p>{{ remindertime }}</p>
+              </div>
               </div>
             </div>
           </div>

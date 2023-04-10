@@ -23,14 +23,19 @@ export class MedicinescheduleComponent {
     quantity: [],
     days: []
   };
-  medicinescheduledata: any;
+  medicinescheduledata: any = {
+    days: [],
+    medicine_id: [],
+    medicinenames: [],
+    otherdetails: []
+  };
   ngOnInit() {
-    console.log("hello");
-    
+    // console.log("hello");
+
     this.service.getmedicineschedules().subscribe((res: any) => {
       if (res.success) {
-        this.toastr.success(res.message);
-        this.medicinescheduledata=res.data;
+        // this.toastr.success(res.message);
+        this.medicinescheduledata = res.data;
         console.log(this.medicinescheduledata);
       }
       else
@@ -116,6 +121,7 @@ export class MedicinescheduleComponent {
     // console.log("hello");
 
   }
+
   validatemedicinedata() {
     this.editedmedicinescheduledata = {
       medicinename: "",
@@ -215,74 +221,58 @@ export class MedicinescheduleComponent {
   addmedicineschedule() {
 
     this.service.addmedicineschedule(this.editedmedicinescheduledata).subscribe((res: any) => {
-      if (res.success)
+      if (res.success) {
         this.toastr.success(res.message);
+        this.ngOnInit()
+      }
+
       else
         this.toastr.warning(res.message);
       // this.router.navigate(['login']);
     })
   }
-  students: any[] = [
-    {
-      name: 'Om Siddhapura'
-    },
-    {
-      name: 'Om Siddhapura'
-    },
-    {
-      name: 'Om Siddhapura'
-    }
-    ,
-    {
-      name: 'Om Siddhapura'
-    }
-    ,
-    {
-      name: 'Om Siddhapura'
-    }
-    ,
-    {
-      name: 'Om Siddhapura'
-    }
-    ,
-    {
-      name: 'Om Siddhapura'
-    }
-    ,
-    {
-      name: 'Om Siddhapura'
-    }
-    ,
-    {
-      name: 'Om Siddhapura'
-    }
-    ,
-    {
-      name: 'Om Siddhapura'
-    }
-    ,
-    {
-      name: 'Om Siddhapura'
-    }
-    ,
-    {
-      name: 'Om Siddhapura'
-    }
-    ,
-    {
-      name: 'Om Siddhapura'
-    }
-    ,
-    {
-      name: 'Om Siddhapura'
-    }
-    ,
-    {
-      name: 'Om Siddhapura'
-    }
-    ,
-    {
-      name: 'Om Siddhapura'
-    }
-  ];
+  deleteschedule(medicine_id: any, index: any) {
+    console.log(medicine_id);
+
+    this.service.deletemedicineshedule(medicine_id).subscribe((result: any) => {
+      if (result.success) {
+        // this.medicinescheduledata = result.data;
+        this.toastr.success(result.message);
+        // console.log(this.medicinescheduledata);
+        this.medicinescheduledata["medicine_id"] = this.medicinescheduledata["medicine_id"].filter((item: any) => {
+          return this.medicinescheduledata["medicine_id"].indexOf(item) != index;
+        })
+        this.medicinescheduledata["days"] = this.medicinescheduledata["days"].filter((item: any) => {
+          return this.medicinescheduledata["days"].indexOf(item) != index;
+        })
+        this.medicinescheduledata["medicinenames"] = this.medicinescheduledata["medicinenames"].filter((item: any) => {
+          return this.medicinescheduledata["medicinenames"].indexOf(item) != index;
+        })
+        this.medicinescheduledata["otherdetails"] = this.medicinescheduledata["otherdetails"].filter((item: any) => {
+          return this.medicinescheduledata["otherdetails"].indexOf(item) != index;
+        })
+      }
+      else
+        this.toastr.warning(result.message);
+    });
+  }
+  filterschedules() {
+    let medicinename:any=document.getElementById("search");
+   
+    
+    const day_mon: any = document.getElementById("filterMon");
+    const day_tue: any = document.getElementById("filterTue");
+    const day_wed: any = document.getElementById("filterWed");
+    const day_thus: any = document.getElementById("filterThus");
+    const day_fri: any = document.getElementById("filterFri");
+    const day_sat: any = document.getElementById("filterSat");
+    const day_sun: any = document.getElementById("filterSun");
+
+    const timephase_morning: any = document.getElementById("filtermorning");
+    const timephase_afternoon: any = document.getElementById("filterafternoon");
+    const timephase_night: any = document.getElementById("filternight");
+    
+    
+
+  }
 }

@@ -10,7 +10,7 @@ export class UsertasksService {
   addmedicineschedule(scheduledata: any) {
     // console.log(scheduledata);
     scheduledata = { ...scheduledata, userid: localStorage.getItem("userid") };
-    // console.log(scheduledata);
+    console.log(scheduledata);
     return this.http.post(this.apiURL + '/addmedicine', scheduledata);
 
   }
@@ -22,6 +22,16 @@ export class UsertasksService {
 
     }
     return this.http.get(this.apiURL + '/getmedicineschedule', { params: queryParams });
+
+  }
+  deletemedicineshedule(medicine_id:string){
+    let queryParams = new HttpParams();
+    let userid = localStorage.getItem('userid');
+    if (userid != null) {
+      queryParams = queryParams.append("userid", userid);
+      queryParams = queryParams.append("medicine_id", medicine_id);
+    }
+    return this.http.delete(this.apiURL + '/deletemedicineschedule', { params: queryParams });
 
   }
 }
