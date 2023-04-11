@@ -19,7 +19,8 @@ interface task {
 })
 
 export class HeaderComponent {
-  isloggedin: Boolean =false
+  
+  isloggedin: Boolean=false
   constructor(private router: Router,private service:AuthenticationService, private toastr: ToastrService
   ) {
     // this.isloggedin= AuthenticationService.isloggedin;

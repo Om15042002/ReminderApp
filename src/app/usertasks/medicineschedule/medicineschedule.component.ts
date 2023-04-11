@@ -7,8 +7,9 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UsertasksService } from 'src/app/services/usertasks.service';
+import { filter } from 'rxjs';
+import { CommonscreensModule } from 'src/app/commonscreens/commonscreens.module';
 // import { ToastrService } from 'ngx-toastr';
-
 @Component({
   selector: 'app-medicineschedule',
   templateUrl: './medicineschedule.component.html',
@@ -29,18 +30,42 @@ export class MedicinescheduleComponent {
     medicinenames: [],
     otherdetails: []
   };
+  filtermedicinescheduledata: any = {
+    days: [],
+    medicine_id: [],
+    medicinenames: [],
+    otherdetails: []
+  };
   ngOnInit() {
-    // console.log("hello");
-
-    this.service.getmedicineschedules().subscribe((res: any) => {
-      if (res.success) {
-        // this.toastr.success(res.message);
-        this.medicinescheduledata = res.data;
-        console.log(this.medicinescheduledata);
-      }
-      else
-        this.toastr.warning(res.message);
-    });
+    console.log("hello");
+    this.loader = true;
+    this.isdatafound=true;
+    setTimeout(() => {
+      this.service.getmedicineschedules().subscribe((res: any) => {
+        console.log(res);
+        if (res.success) {
+          // this.toastr.success(res.message);
+          
+          
+          if(res.data==null){
+            this.loader=false;
+            this.isdatafound=false;
+          }
+          else{
+            this.medicinescheduledata = res.data;
+            this.filtermedicinescheduledata = this.medicinescheduledata
+            console.log(this.medicinescheduledata);
+            // this.closeloadingmodal();
+          }
+          this.loader=false;
+        }
+        else{
+          this.toastr.warning(res.message);
+          this.loader=false;
+        }
+          
+      });
+    }, 800);
   }
   openfiltermodal() {
     const modal = document.getElementById("filterModal")
@@ -72,6 +97,18 @@ export class MedicinescheduleComponent {
     if (modal != null)
       modal.style.display = 'none'
   }
+  openloadingmodal() {
+    const modal = document.getElementById("laodingModal")
+    if (modal != null)
+      modal.style.display = 'block'
+  }
+  closeloadingmodal() {
+    const modal = document.getElementById("laodingModal")
+    if (modal != null)
+      modal.style.display = 'none'
+  }
+  loader: boolean = false;
+  isdatafound:boolean=false;
   constructor(private builder: FormBuilder, private toastr: ToastrService, private service: UsertasksService, private router: Router) {
 
   }
@@ -129,7 +166,6 @@ export class MedicinescheduleComponent {
       timephase: [],
       quantity: [],
       days: []
-
     };
     const medicinename: any = document.getElementById("medicinename");
 
@@ -223,7 +259,8 @@ export class MedicinescheduleComponent {
     this.service.addmedicineschedule(this.editedmedicinescheduledata).subscribe((res: any) => {
       if (res.success) {
         this.toastr.success(res.message);
-        this.ngOnInit()
+        this.closeaddschedulemodal()
+        this.ngOnInit();
       }
 
       else
@@ -251,15 +288,15 @@ export class MedicinescheduleComponent {
         this.medicinescheduledata["otherdetails"] = this.medicinescheduledata["otherdetails"].filter((item: any) => {
           return this.medicinescheduledata["otherdetails"].indexOf(item) != index;
         })
+        this.filtermedicinescheduledata = this.medicinescheduledata
       }
       else
         this.toastr.warning(result.message);
     });
   }
   filterschedules() {
-    let medicinename:any=document.getElementById("search");
-   
-    
+    const medicinename: any = document.getElementById("search");
+
     const day_mon: any = document.getElementById("filterMon");
     const day_tue: any = document.getElementById("filterTue");
     const day_wed: any = document.getElementById("filterWed");
@@ -268,11 +305,273 @@ export class MedicinescheduleComponent {
     const day_sat: any = document.getElementById("filterSat");
     const day_sun: any = document.getElementById("filterSun");
 
-    const timephase_morning: any = document.getElementById("filtermorning");
-    const timephase_afternoon: any = document.getElementById("filterafternoon");
-    const timephase_night: any = document.getElementById("filternight");
-    
-    
+    const timephase_morning: any = document.getElementById("filterMorning");
+    const timephase_afternoon: any = document.getElementById("filterAfternoon");
+    const timephase_night: any = document.getElementById("filterNight");
+    this.filtermedicinescheduledata = {
+      days: [],
+      medicine_id: [],
+      medicinenames: [],
+      otherdetails: []
+    };
 
+    console.log(medicinename.value);
+
+    if (medicinename.value != "") {
+      let filternames = []
+      let temp: any = {
+        days: [],
+        medicine_id: [],
+        medicinenames: [],
+        otherdetails: []
+      };
+      filternames = this.medicinescheduledata["medicinenames"].filter((item: any) => {
+        return item == medicinename.value;
+      })
+      for (let i of filternames) {
+        let index = this.medicinescheduledata["medicinenames"].indexOf(medicinename.value);
+        temp['days'].push(this.medicinescheduledata['days'][index])
+        temp['medicine_id'].push(this.medicinescheduledata['medicine_id'][index])
+        temp['medicinenames'].push(this.medicinescheduledata['medicinenames'][index])
+        temp['otherdetails'].push(this.medicinescheduledata['otherdetails'][index])
+      }
+      this.filtermedicinescheduledata = temp
+      console.log(this.filtermedicinescheduledata);
+    }
+    else {
+      this.filtermedicinescheduledata = this.medicinescheduledata;
+    }
+    if (timephase_morning.checked || timephase_afternoon.checked || timephase_night.checked) {
+
+      if (timephase_morning.checked) {
+        let filterdays = [];
+        let temp: any = {
+          days: [],
+          medicine_id: [],
+          medicinenames: [],
+          otherdetails: []
+        };
+        filterdays = this.filtermedicinescheduledata["otherdetails"].filter((item: any) => {
+          return item['timephase'].includes("morning");
+        })
+        // console.log(filterdays);
+
+        for (let i of filterdays) {
+          let index = this.filtermedicinescheduledata["otherdetails"].indexOf(i);
+          temp['days'].push(this.filtermedicinescheduledata['days'][index])
+          temp['medicine_id'].push(this.filtermedicinescheduledata['medicine_id'][index])
+          temp['medicinenames'].push(this.filtermedicinescheduledata['medicinenames'][index])
+          temp['otherdetails'].push(this.filtermedicinescheduledata['otherdetails'][index])
+        }
+        this.filtermedicinescheduledata = temp
+        // console.log(this.filtermedicinescheduledata);
+      }
+      if (timephase_afternoon.checked) {
+        let filterdays = [];
+        let temp: any = {
+          days: [],
+          medicine_id: [],
+          medicinenames: [],
+          otherdetails: []
+        };
+        filterdays = this.filtermedicinescheduledata["otherdetails"].filter((item: any) => {
+          return item['timephase'].includes("afternoon");
+        })
+        // console.log(filterdays);
+
+        for (let i of filterdays) {
+          let index = this.filtermedicinescheduledata["otherdetails"].indexOf(i);
+          temp['days'].push(this.filtermedicinescheduledata['days'][index])
+          temp['medicine_id'].push(this.filtermedicinescheduledata['medicine_id'][index])
+          temp['medicinenames'].push(this.filtermedicinescheduledata['medicinenames'][index])
+          temp['otherdetails'].push(this.filtermedicinescheduledata['otherdetails'][index])
+        }
+        this.filtermedicinescheduledata = temp
+      }
+      if (timephase_night.checked) {
+        let filterdays = [];
+        let temp: any = {
+          days: [],
+          medicine_id: [],
+          medicinenames: [],
+          otherdetails: []
+        };
+        filterdays = this.filtermedicinescheduledata["otherdetails"].filter((item: any) => {
+          return item['timephase'].includes("night");
+        })
+        // console.log(filterdays);
+
+        for (let i of filterdays) {
+          let index = this.filtermedicinescheduledata["otherdetails"].indexOf(i);
+          temp['days'].push(this.filtermedicinescheduledata['days'][index])
+          temp['medicine_id'].push(this.filtermedicinescheduledata['medicine_id'][index])
+          temp['medicinenames'].push(this.filtermedicinescheduledata['medicinenames'][index])
+          temp['otherdetails'].push(this.filtermedicinescheduledata['otherdetails'][index])
+        }
+        this.filtermedicinescheduledata = temp;
+      }
+    }
+    console.log(this.filtermedicinescheduledata);
+
+    if (day_mon.checked || day_tue.checked || day_wed.checked || day_thus.checked || day_fri.checked || day_sat.checked || day_sun.checked) {
+      if (day_mon.checked) {
+        let filterschduleday = []
+        let temp: any = {
+          days: [],
+          medicine_id: [],
+          medicinenames: [],
+          otherdetails: []
+        };
+        filterschduleday = this.filtermedicinescheduledata["days"].filter((item: any) => {
+          return item['day_name'].includes("Mon");
+        })
+        // console.log(filterdays);
+
+        for (let i of filterschduleday) {
+          let index = this.filtermedicinescheduledata["days"].indexOf(i);
+          temp['days'].push(this.filtermedicinescheduledata['days'][index])
+          temp['medicine_id'].push(this.filtermedicinescheduledata['medicine_id'][index])
+          temp['medicinenames'].push(this.filtermedicinescheduledata['medicinenames'][index])
+          temp['otherdetails'].push(this.filtermedicinescheduledata['otherdetails'][index])
+        }
+        this.filtermedicinescheduledata = temp;
+
+      }
+      if (day_tue.checked) {
+        let filterschduleday = []
+        let temp: any = {
+          days: [],
+          medicine_id: [],
+          medicinenames: [],
+          otherdetails: []
+        };
+        filterschduleday = this.filtermedicinescheduledata["days"].filter((item: any) => {
+          return item['day_name'].includes("Tue");
+        })
+        // console.log(filterdays);
+
+        for (let i of filterschduleday) {
+          let index = this.filtermedicinescheduledata["days"].indexOf(i);
+          temp['days'].push(this.filtermedicinescheduledata['days'][index])
+          temp['medicine_id'].push(this.filtermedicinescheduledata['medicine_id'][index])
+          temp['medicinenames'].push(this.filtermedicinescheduledata['medicinenames'][index])
+          temp['otherdetails'].push(this.filtermedicinescheduledata['otherdetails'][index])
+        }
+        this.filtermedicinescheduledata = temp;
+      }
+      if (day_wed.checked) {
+        let filterschduleday = []
+        let temp: any = {
+          days: [],
+          medicine_id: [],
+          medicinenames: [],
+          otherdetails: []
+        };
+        filterschduleday = this.filtermedicinescheduledata["days"].filter((item: any) => {
+          return item['day_name'].includes("Wed");
+        })
+        // console.log(filterdays);
+
+        for (let i of filterschduleday) {
+          let index = this.filtermedicinescheduledata["days"].indexOf(i);
+          temp['days'].push(this.filtermedicinescheduledata['days'][index])
+          temp['medicine_id'].push(this.filtermedicinescheduledata['medicine_id'][index])
+          temp['medicinenames'].push(this.filtermedicinescheduledata['medicinenames'][index])
+          temp['otherdetails'].push(this.filtermedicinescheduledata['otherdetails'][index])
+        }
+        this.filtermedicinescheduledata = temp;
+      }
+      if (day_thus.checked) {
+        let filterschduleday = []
+        let temp: any = {
+          days: [],
+          medicine_id: [],
+          medicinenames: [],
+          otherdetails: []
+        };
+        filterschduleday = this.filtermedicinescheduledata["days"].filter((item: any) => {
+          return item['day_name'].includes("Thus");
+        })
+        // console.log(filterdays);
+
+        for (let i of filterschduleday) {
+          let index = this.filtermedicinescheduledata["days"].indexOf(i);
+          temp['days'].push(this.filtermedicinescheduledata['days'][index])
+          temp['medicine_id'].push(this.filtermedicinescheduledata['medicine_id'][index])
+          temp['medicinenames'].push(this.filtermedicinescheduledata['medicinenames'][index])
+          temp['otherdetails'].push(this.filtermedicinescheduledata['otherdetails'][index])
+        }
+        this.filtermedicinescheduledata = temp;
+      }
+      if (day_fri.checked) {
+        let filterschduleday = []
+        let temp: any = {
+          days: [],
+          medicine_id: [],
+          medicinenames: [],
+          otherdetails: []
+        };
+        filterschduleday = this.filtermedicinescheduledata["days"].filter((item: any) => {
+          return item['day_name'].includes("Fri");
+        })
+        // console.log(filterdays);
+
+        for (let i of filterschduleday) {
+          let index = this.filtermedicinescheduledata["days"].indexOf(i);
+          temp['days'].push(this.filtermedicinescheduledata['days'][index])
+          temp['medicine_id'].push(this.filtermedicinescheduledata['medicine_id'][index])
+          temp['medicinenames'].push(this.filtermedicinescheduledata['medicinenames'][index])
+          temp['otherdetails'].push(this.filtermedicinescheduledata['otherdetails'][index])
+        }
+        this.filtermedicinescheduledata = temp;
+      }
+      if (day_sat.checked) {
+        let filterschduleday = []
+        let temp: any = {
+          days: [],
+          medicine_id: [],
+          medicinenames: [],
+          otherdetails: []
+        };
+        filterschduleday = this.filtermedicinescheduledata["days"].filter((item: any) => {
+          return item['day_name'].includes("Sat");
+        })
+        // console.log(filterdays);
+
+        for (let i of filterschduleday) {
+          let index = this.filtermedicinescheduledata["days"].indexOf(i);
+          temp['days'].push(this.filtermedicinescheduledata['days'][index])
+          temp['medicine_id'].push(this.filtermedicinescheduledata['medicine_id'][index])
+          temp['medicinenames'].push(this.filtermedicinescheduledata['medicinenames'][index])
+          temp['otherdetails'].push(this.filtermedicinescheduledata['otherdetails'][index])
+        }
+        this.filtermedicinescheduledata = temp;
+      }
+      if (day_sun.checked) {
+        let filterschduleday = []
+        let temp: any = {
+          days: [],
+          medicine_id: [],
+          medicinenames: [],
+          otherdetails: []
+        };
+        filterschduleday = this.filtermedicinescheduledata["days"].filter((item: any) => {
+          return item['day_name'].includes("Sun");
+        })
+        // console.log(filterdays);
+
+        for (let i of filterschduleday) {
+          let index = this.filtermedicinescheduledata["days"].indexOf(i);
+          temp['days'].push(this.filtermedicinescheduledata['days'][index])
+          temp['medicine_id'].push(this.filtermedicinescheduledata['medicine_id'][index])
+          temp['medicinenames'].push(this.filtermedicinescheduledata['medicinenames'][index])
+          temp['otherdetails'].push(this.filtermedicinescheduledata['otherdetails'][index])
+        }
+        this.filtermedicinescheduledata = temp;
+      }
+    }
+    console.log(this.filtermedicinescheduledata);
+
+    this.closefiltermodal()
   }
 }

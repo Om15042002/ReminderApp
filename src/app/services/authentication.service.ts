@@ -4,7 +4,9 @@ import { HttpClient, HttpParams } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    // localStorage.setItem("isloggedin",'false');
+  }
   apiURL = "http://localhost:3000";
   static isloggedin:boolean=false;
 

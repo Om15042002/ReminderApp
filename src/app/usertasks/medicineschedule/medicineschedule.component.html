@@ -287,7 +287,7 @@
         <div><label for="">Time Phase</label></div>
       </div>
       <div class="inputfields flexcolumn">
-        <div><input type="text" id="search"/></div>
+        <div><input type="text" id="search" /></div>
         <div class="flexrow">
           <div>
             <input
@@ -396,11 +396,24 @@
           </div>
         </div>
         <div>
-          <button type="submit" class="btn btn-primary mt-3" (click)="filterschedules()">Apply</button>
+          <button
+            type="submit"
+            class="btn btn-primary mt-3"
+            (click)="filterschedules()"
+          >
+            Apply
+          </button>
         </div>
       </div>
     </div>
   </div>
+</div>
+<div *ngIf="loader" class="modal" style="display: block;">
+  <div class="loader"></div>
+</div>
+<div *ngIf="!isdatafound">
+ <!-- <app-nopagefound></app-nopagefound> -->
+  daslfjdjladsjfladsjfkl
 </div>
 <div class="flexcolumn container" >
   <div class="addmedicineschedle flexrow">
@@ -409,22 +422,28 @@
         Add Schedule
       </button>
     </div>
-    <div style="flex: 10%">
+    <div style="flex: 10%"  *ngIf="isdatafound" >
       <i class="fa fa-filter filtericon" (click)="openfiltermodal()"></i>
     </div>
   </div>
 
-  <div class="medicineschedules">
+  <div class="medicineschedules"  *ngIf="isdatafound" >
     <div
-    *ngFor="
-    let itemname of medicinescheduledata['medicinenames'];
-    let i = index
-  "
+      *ngFor="
+        let itemname of filtermedicinescheduledata['medicinenames'];
+        let i = index
+      "
       class="scheduleitem flexcolumn"
     >
       <div class="flexrow actions">
         <div><i class="far fa-edit" id="edit"></i></div>
-        <div (click)="deleteschedule(medicinescheduledata['medicine_id'][i],i)"><i class="fas fa-trash-alt" id="delete" ></i></div>
+        <div
+          (click)="
+            deleteschedule(filtermedicinescheduledata['medicine_id'][i], i)
+          "
+        >
+          <i class="fas fa-trash-alt" id="delete"></i>
+        </div>
       </div>
       <div class="itemcontent">
         <div class="flexrow">
@@ -439,7 +458,9 @@
               </div>
               <div class="flexrow weekdays">
                 <div
-                  *ngFor="let day of medicinescheduledata['days'][i].day_name"
+                  *ngFor="
+                    let day of filtermedicinescheduledata['days'][i].day_name
+                  "
                 >
                   <button disabled>{{ day }}</button>
                 </div>
@@ -458,8 +479,9 @@
               <div class="flexrow">
                 <div
                   *ngFor="
-                    let timephase of medicinescheduledata['otherdetails'][i]
-                      .timephase
+                    let timephase of filtermedicinescheduledata['otherdetails'][
+                      i
+                    ].timephase
                   "
                 >
                   <p>{{ timephase }}</p>
@@ -467,23 +489,25 @@
               </div>
               <div class="flexrow">
                 <div
-                *ngFor="
-                  let quantity of medicinescheduledata['otherdetails'][i]
-                    .quantity
-                "
-              >
-                <p>{{ quantity }}</p>
-              </div>
+                  *ngFor="
+                    let quantity of filtermedicinescheduledata['otherdetails'][
+                      i
+                    ].quantity
+                  "
+                >
+                  <p>{{ quantity }}</p>
+                </div>
               </div>
               <div class="flexrow">
                 <div
-                *ngFor="
-                  let remindertime of medicinescheduledata['otherdetails'][i]
-                    .remindertime
-                "
-              >
-                <p>{{ remindertime }}</p>
-              </div>
+                  *ngFor="
+                    let remindertime of filtermedicinescheduledata[
+                      'otherdetails'
+                    ][i].remindertime
+                  "
+                >
+                  <p>{{ remindertime }}</p>
+                </div>
               </div>
             </div>
           </div>

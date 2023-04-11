@@ -11,6 +11,7 @@ import { AuthenticationModule } from '../authentication/authentication.module';
 import { AppRoutingModule } from '../app-routing.module';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ToastrModule } from 'ngx-toastr';
+import { NodatafoundComponent } from './nodatafound/nodatafound.component';
 
 
 
@@ -21,7 +22,8 @@ import { ToastrModule } from 'ngx-toastr';
     HomepagecontentComponent,
     AboutusComponent,
     ContactusComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    NodatafoundComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +41,8 @@ import { ToastrModule } from 'ngx-toastr';
     FooterComponent,
     HomepagecontentComponent,
     AboutusComponent,
-    ContactusComponent
+    ContactusComponent,
+    NodatafoundComponent
   ]
 })
 export class CommonscreensModule { }

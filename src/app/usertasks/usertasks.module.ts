@@ -4,6 +4,7 @@ import { MedicinescheduleComponent } from './medicineschedule/medicineschedule.c
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from '../app-routing.module';
+import { CommonscreensModule } from '../commonscreens/commonscreens.module';
 
 // const newroutes: Routes = [
 //   { path: 'medicineschedule', component: MedicinescheduleComponent },
@@ -16,7 +17,8 @@ import { AppRoutingModule } from '../app-routing.module';
   imports: [
     CommonModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CommonscreensModule
   ],
   exports:[
     MedicinescheduleComponent
