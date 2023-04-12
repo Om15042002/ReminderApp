@@ -18,6 +18,7 @@ export class RegisterationComponent {
     uname:this.builder.control('',Validators.compose([Validators.required,Validators.minLength(6)])),
     upassword:this.builder.control('',Validators.required),
     email:this.builder.control('',Validators.compose([Validators.required,Validators.email])),
+    mobilenumber:this.builder.control('',Validators.required),
   })
 
   registeruser(){
