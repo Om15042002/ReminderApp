@@ -37,7 +37,7 @@ export class LoginComponent {
       })
     }
     else {
-      this.toastr.warning("Please enter valid !!")
+      this.toastr.warning("Please enter valid details!!")
     }
   }
   gotoregistration() {

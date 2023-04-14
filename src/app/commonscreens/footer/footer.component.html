@@ -1,6 +1,6 @@
 <head> </head>
 <body>
-
+  <form action="" [formGroup]="queryform" (ngSubmit)="sendquery()" id="contactus">
     <div class="flexrow maincontainer">
       <div class="flexcolumn leftsection">
         <div class="flexrow">
@@ -21,13 +21,13 @@
             <div><label for="">Query Description:</label></div>
           </div>
           <div class="inputfields flexcolumn">
-            <div><input type="text" /></div>
-            <div><input type="text" /></div>
-            <div><textarea name="" id="" cols="30" rows="10"></textarea></div>
-            <div><button class="send" (click)="sendquery()">Send</button></div>
+            <div><input type="text"   formControlName="uname"/></div>
+            <div><input type="text"   formControlName="email"/></div>
+            <div><textarea name="" id="" cols="30" rows="10"   formControlName="description"></textarea></div>
+            <div><button class="send">Send</button></div>
           </div>
         </div>
       </div>
     </div>
-
+  </form>
 </body>

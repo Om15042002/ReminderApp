@@ -25,6 +25,9 @@ export class HeaderComponent {
   ) {
     // this.isloggedin= AuthenticationService.isloggedin;
   }
+  gotobottom(){
+    document.getElementById("contactus")?.scrollIntoView( {behavior: "smooth"})
+  }
   ngOnInit():void{
     this.service.loginEmitter.subscribe((value)=>{
       this.isloggedin=value;

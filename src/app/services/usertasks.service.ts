@@ -24,7 +24,7 @@ export class UsertasksService {
     return this.http.get(this.apiURL + '/getmedicineschedule', { params: queryParams });
 
   }
-  deletemedicineshedule(medicine_id:string){
+  deletemedicineshedule(medicine_id: string) {
     let queryParams = new HttpParams();
     let userid = localStorage.getItem('userid');
     if (userid != null) {
@@ -32,6 +32,13 @@ export class UsertasksService {
       queryParams = queryParams.append("medicine_id", medicine_id);
     }
     return this.http.delete(this.apiURL + '/deletemedicineschedule', { params: queryParams });
+
+  }
+  addquery(querydata: any) {
+    // console.log(scheduledata);
+    querydata = { ...querydata, dateadded: new Date(Date.now()).toLocaleString() };
+    console.log(querydata);
+    return this.http.post(this.apiURL + '/addquery', querydata);
 
   }
 }

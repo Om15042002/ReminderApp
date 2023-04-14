@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UsertasksService } from 'src/app/services/usertasks.service';
 import { filter } from 'rxjs';
-import { CommonscreensModule } from 'src/app/commonscreens/commonscreens.module';
 // import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-medicineschedule',
@@ -214,8 +213,8 @@ export class MedicinescheduleComponent {
         }
       }
       if (timephase_afternoon.checked) {
-        if (quantity_morning.value <= 0 ||
-          remindertime_morning.value <= 0) {
+        if (quantity_afternoon.value <= 0 ||
+          remindertime_afternoon.value <= 0) {
           this.toastr.warning("Please enter proper value of quantity and remindertime for afternoon!!")
         }
         else {
@@ -225,8 +224,8 @@ export class MedicinescheduleComponent {
         }
       }
       if (timephase_night.checked) {
-        if (quantity_morning.value == "" ||
-          remindertime_morning.value == "") {
+        if (quantity_night.value == "" ||
+          remindertime_night.value == "") {
           this.toastr.warning("Please enter proper value of quantity and remindertime for night!!")
         }
         else {
@@ -289,6 +288,7 @@ export class MedicinescheduleComponent {
           return this.medicinescheduledata["otherdetails"].indexOf(item) != index;
         })
         this.filtermedicinescheduledata = this.medicinescheduledata
+        this.isdatafound=false
       }
       else
         this.toastr.warning(result.message);

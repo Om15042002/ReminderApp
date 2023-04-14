@@ -12,6 +12,7 @@ import { AppRoutingModule } from '../app-routing.module';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ToastrModule } from 'ngx-toastr';
 import { NodatafoundComponent } from './nodatafound/nodatafound.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -29,6 +30,7 @@ import { NodatafoundComponent } from './nodatafound/nodatafound.component';
     CommonModule,
     AuthenticationModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     ToastrModule.forRoot({
       timeOut: 1000,
       positionClass: 'toast-bottom-right',
@@ -42,7 +44,8 @@ import { NodatafoundComponent } from './nodatafound/nodatafound.component';
     HomepagecontentComponent,
     AboutusComponent,
     ContactusComponent,
-    NodatafoundComponent
+    NodatafoundComponent,
+    PagenotfoundComponent,
   ]
 })
 export class CommonscreensModule { }

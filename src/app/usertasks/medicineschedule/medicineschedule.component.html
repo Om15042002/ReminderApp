@@ -6,11 +6,11 @@
     <form action="" (ngSubmit)="validatemedicinedata()">
       <div class="flexrow">
         <div class="labels flexcolumn">
-          <label for="">Medicine Name:</label>
-          <label for="">Schedule Time: </label>
-          <label for="">Time Phase: </label>
-          <label for="">Quantity: </label>
-          <label for="">Reminder At: </label>
+          <div><label for="">Medicine Name:</label></div>
+          <div><label for="">Schedule Time: </label></div>
+          <div><label for="">Time Phase: </label></div>
+          <div><label for="">Quantity: </label></div>
+          <div><label for="">Reminder At: </label></div>
         </div>
         <div class="inputfields flexcolumn">
           <div><input type="text" id="medicinename" /></div>
@@ -281,10 +281,10 @@
       <span class="close" (click)="closefiltermodal()">&times;</span>
     </div>
     <div class="flexrow">
-      <div class="labels flexcolumn">
-        <div><label for="">Medicine Name</label></div>
-        <div><label for="">Day</label></div>
-        <div><label for="">Time Phase</label></div>
+      <div class="filterl labels flexcolumn">
+        <div><label for="">Medicine Name: </label></div>
+        <div style="margin-top: 10px"><label for="">Day: </label></div>
+        <div style="margin-top: 10px"><label for="">Time Phase:</label></div>
       </div>
       <div class="inputfields flexcolumn">
         <div><input type="text" id="search" /></div>
@@ -408,26 +408,26 @@
     </div>
   </div>
 </div>
-<div *ngIf="loader" class="modal" style="display: block;">
+<div *ngIf="loader" class="modal" style="display: block">
   <div class="loader"></div>
 </div>
-<div *ngIf="!isdatafound">
- <!-- <app-nopagefound></app-nopagefound> -->
-  daslfjdjladsjfladsjfkl
-</div>
-<div class="flexcolumn container" >
+
+<div class="flexcolumn container">
   <div class="addmedicineschedle flexrow">
     <div style="flex: 90%">
       <button id="addschedule" (click)="openaddschedulemodal()">
         Add Schedule
       </button>
     </div>
-    <div style="flex: 10%"  *ngIf="isdatafound" >
+    <div style="flex: 10%" *ngIf="isdatafound">
       <i class="fa fa-filter filtericon" (click)="openfiltermodal()"></i>
     </div>
   </div>
-
-  <div class="medicineschedules"  *ngIf="isdatafound" >
+  <div *ngIf="!isdatafound">
+    <app-nodatafound></app-nodatafound>
+    <!-- daslfjdjladsjfladsjfkl -->
+  </div>
+  <div class="medicineschedules" *ngIf="isdatafound">
     <div
       *ngFor="
         let itemname of filtermedicinescheduledata['medicinenames'];
@@ -456,7 +456,7 @@
               <div>
                 <p>{{ itemname }}</p>
               </div>
-              <div class="flexrow weekdays">
+              <div class="flexrow weekdays" style="flex-wrap: wrap">
                 <div
                   *ngFor="
                     let day of filtermedicinescheduledata['days'][i].day_name

@@ -9,9 +9,10 @@ import { UsertasksModule } from './usertasks/usertasks.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PagenotfoundComponent } from './commonscreens/pagenotfound/pagenotfound.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,7 +23,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    
   ],
   providers: [],
   bootstrap: [AppComponent]

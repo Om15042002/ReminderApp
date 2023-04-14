@@ -31,7 +31,8 @@ export class RegisterationComponent {
       })
     }
     else{
-      this.toastr.warning("Please enter valid data!!")
+      this.toastr.warning("Please enter valid details!!");
+      this.registrationform.reset()
     }
   }
 }
