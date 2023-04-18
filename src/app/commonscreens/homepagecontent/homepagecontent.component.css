@@ -1,0 +1,38 @@
+#mainimage{
+    width: 100vw;
+    height: 650px;
+}
+.flexrow {
+    align-items: center;
+}
+.maincontainer{
+    justify-content: space-between;
+}
+.maincontainer > div{
+    overflow: hiddenf;
+}
+.flexrow  div{
+    flex: 50%;
+}
+#title{
+    font-weight: 900;
+    font-size: 5em;
+}
+#img1{
+    height: 400px;
+    width:60%;
+    margin: 30px;
+    margin-left: 80px;
+}
+#img2{
+    height: 400px;
+    width:60%;
+    margin: 30px;
+    margin-left: 80px;
+    border-radius: 30px;
+}
+.ruler{
+    width: 90%;
+    /* text-align: center; */
+    margin: auto;
+}
