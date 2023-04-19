@@ -8,7 +8,6 @@ export class AuthenticationService {
     // localStorage.setItem("isloggedin",'false');
   }
   apiURL = "http://localhost:3000";
-  static isloggedin:boolean=false;
 
   loginEmitter=new EventEmitter<boolean>();
   raiseDataEmitterEvent(isloggedin:boolean){

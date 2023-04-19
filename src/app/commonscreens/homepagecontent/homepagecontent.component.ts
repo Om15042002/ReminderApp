@@ -11,38 +11,44 @@ export class HomepagecontentComponent {
   }
   loadtext() {
     // console.log('hello');
-    
-    const text1: any = document.getElementsByClassName("title1").item(0);
-    const text2: any = document.getElementsByClassName("title2").item(0);
-    const text3: any = document.getElementsByClassName("title3").item(0);
-    if (document.documentElement.scrollTop > 300&&document.documentElement.scrollTop < 1000) {
-      text1.style.left = "0px";
-      text1.style.transition = "left 2s ";
-    }  if(document.documentElement.scrollTop > 1000||document.documentElement.scrollTop <10){
-      text1.style.left = "1000px";
-      text1.style.transition = "left 2s ";
+
+    const text1: any = Array.from(document.getElementsByClassName("title1"));
+    const text2: any = Array.from(document.getElementsByClassName("title2"))
+    const text3: any = Array.from(document.getElementsByClassName("title3"))
+    if (document.documentElement.scrollTop > 200 && document.documentElement.scrollTop < 1000) {
+      for (let item of text1) {
+        item.style.left = "0px";
+        item.style.transition = "left 2s ";
+      }
+    } else {
+      for (let item of text1) {
+        item.style.left = "1000px";
+        item.style.transition = "left 2s ";
+      }
     }
-    if(document.documentElement.scrollTop > 400&&document.documentElement.scrollTop <1000){
-      text2.style.right = "0px";
-      text2.style.transition = "right 2s ";
-      console.log('hello');
-      
+    if (document.documentElement.scrollTop > 600 && document.documentElement.scrollTop < 1400) {
+      for (let item of text2) {
+        item.style.right = "0px";
+        item.style.transition = "right 2s ";
+      }
     }
-    if(document.documentElement.scrollTop > 1500||document.documentElement.scrollTop <1000){
-      text2.style.right = "1000px";
-      text2.style.transition = "left 2s ";
-      console.log('hello');
+    else {
+      for (let item of text2) {
+        item.style.right = "1000px";
+        item.style.transition = "right 2s ";
+      }
     }
-    if(document.documentElement.scrollTop > 1300&&document.documentElement.scrollTop <1700){
-      text3.style.left = "0px";
-      text3.style.transition = "left 2s ";
-      // console.log('hello');
-      
+    if (document.documentElement.scrollTop > 1300 && document.documentElement.scrollTop < 2000) {
+      for (let item of text3) {
+        item.style.left = "0px";
+        item.style.transition = "left 2s ";
+      }
     }
-    if(document.documentElement.scrollTop > 1700||document.documentElement.scrollTop <500){
-      text3.style.left = "1000px";
-      text3.style.transition = "left 2s ";
-      // console.log('hello');
+    else {
+      for (let item of text3) {
+        item.style.left = "1000px";
+        item.style.transition = "left 2s ";
+      }
     }
   }
 }

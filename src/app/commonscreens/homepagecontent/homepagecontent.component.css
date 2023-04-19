@@ -9,7 +9,7 @@
     justify-content: space-between;
 }
 .maincontainer > div{
-    overflow: hiddenf;
+    overflow: hidden;
 }
 .flexrow  div{
     flex: 50%;
@@ -35,4 +35,8 @@
     width: 90%;
     /* text-align: center; */
     margin: auto;
+}
+.subtitle{
+    color: grey;
+    opacity: 0.8;
 }

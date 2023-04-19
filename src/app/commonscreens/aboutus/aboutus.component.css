@@ -15,10 +15,10 @@ header {
   padding: 20px;
 }
 main {
-  height: calc(100vh - 150px);
+  /* height: calc(100vh - 150px); */
   width: 100%;
   background-color: #f5ebeb;
-  overflow: auto;
+  /* overflow: auto; */
 }
 footer {
   height: 50px;
